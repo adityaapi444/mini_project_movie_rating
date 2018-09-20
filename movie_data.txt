@@ -1,0 +1,16 @@
+1,ABC,Sci-fi|Horror,2007
+2,PQR,Drama|Romantic,1999
+3,LMN,Drama|Horror,2002
+4,XYZ,Drama|Sci-fi|Horror,2007
+5,GHT,Horror|Action,1999
+6,TRF,Sci-fi,2007
+7,REF,Drama|Comedy,1999
+8,POU,Animation,1999
+9,YTR,Action|Thriller,2002
+10,RJK,Crime|Thriller,2002
+11,Toy Story,Animation|Comedy|Family,1995
+12,Jumanji,Adventure|Fantasy|Family,2017
+13,Grumpier Old Men,Romantic|Comedy,1995
+14,Father of the Bride,Comedy,1991
+15,Heat,Action|Crime|Drama|Thriller,1996
+16,Sudden Death,Adventure|Thriller|Action,1997
