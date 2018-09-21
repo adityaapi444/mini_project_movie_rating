@@ -14,10 +14,9 @@ list_data_v1=raw_data_movie.split("\n")
 for i in range(len(list_data_v1)):
     list_data_v2.append(list_data_v1[i].split(","))
 for j in range(len(list_data_v2)):
-    list_data_movie_v3.append({list_attr_movie[i]:list_data_v2[j][i] for i in range(len(list_attr_movie))})
+    list_data_movie_v3.append(dict(zip(list_attr_movie,list_data_v2[j])))
 for i in range(len(list_data_v2)):
     list_data_movie_v3[i]["genre"]=list_data_v2[i][2].split("|")
-    list_data_movie_v3[i]["year"]=int(list_data_movie_v3[i]["year"])
 #rating_data
 list_data_v2.clear()
 list_data_v1=raw_data_ratings.split("\n")
@@ -32,8 +31,8 @@ c=0
 for i in range(len(list_data_movie_v3)):
         genre.update(x for x in list_data_movie_v3[i]["genre"])
 #create set for year
-#for i in range(len(list_data_movie_v3)):
-        #year.update(x for x in list_data_movie_v3[i]["year"])
+for i in range(len(list_data_movie_v3)):
+        year.update(x for x in [list_data_movie_v3[i]["year"]])
 def movie_count_for_spec_genre(a):
     global c
     if a=='All':
@@ -68,7 +67,7 @@ def movie_count_by_year_rating_cmbgenre(y,r,g):
     global c
     g=g.split()
     for i in range(len(list_data_movie_v3)):
-        if list_data_movie_v3[i]["year"]>y:
+        if int(list_data_movie_v3[i]["year"])>y:
             temp_set=set(i for i in list_data_movie_v3[i]["genre"] if i in g)
             if temp_set==set(g) and list_data_ratings_v3[i]["rating"]>r:
                 print(list_data_movie_v3[i]['movie_name'])
@@ -92,7 +91,6 @@ def top_movie_by_genre(a):
                 print("Top movie in",each,"was","'",c,"'")
                 lar=0
                 c=0
-#new_try
 def top_movie_by_year(a):
     global c
     lar=0
@@ -111,8 +109,6 @@ def top_movie_by_year(a):
                 print("Top movie in",each,"was","'",c,"'")
                 lar=0
                 c=0
-
-#new end
 #exection starts from here
 while True:
     print("1-> movies_count by genre ans\n2-> movie count by genre and ratings\n3=>movie_count_by_combination_of_(year,rating,genre)")
@@ -136,7 +132,7 @@ while True:
        top_movie_by_genre(n1.capitalize())
     elif n==5:
        n1=input("enter year or 'all' for each year")
-       top_movie_by_year(n1)
+       top_movie_by_year(n1.capitalize())
 #continue yes or no   
     ync=input("Do you want to continue (type 'y' or 'n')")
     while ync not in ('y','n','Y','N'):
